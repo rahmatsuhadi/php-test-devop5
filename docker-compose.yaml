@@ -2,7 +2,7 @@
 
 services:
   mysql:
-    image: mysql
+    image: mysql:5.7
     container_name: mysql-server-core
     environment:
       MYSQL_ROOT_PASSWORD: 2wsx1qaz
