@@ -1,0 +1,29 @@
+# version: '3.8'
+
+services:
+  mysql:
+    image: mysql
+    container_name: mysql-server-core
+    environment:
+      MYSQL_ROOT_PASSWORD: 2wsx1qaz
+      MYSQL_DATABASE: php_db
+    networks:
+      - bridge
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+
+  php:
+    build: ./
+    container_name: php-db
+    networks:
+      - bridge
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/var/www/html
+
+networks:
+  bridge:
+    driver: bridge
